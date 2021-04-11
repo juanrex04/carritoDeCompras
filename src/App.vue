@@ -1,6 +1,7 @@
 <template>
   <div class="container text-center">
     <h1 class="mb-4">Carro de Compras</h1>
+    <!-- <pre></pre> -->
     <div class="row">
       <Card v-for="product of productsList" :key="product.id" :productCard="product"/>
     </div>
