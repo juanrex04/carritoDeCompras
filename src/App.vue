@@ -1,6 +1,6 @@
 <template>
   <div class="container text-center">
-    <h1 class="mb-4">Carro de Compras</h1>
+    <h1 class="my-4">Cart Shop</h1>
     <!-- <pre></pre> -->
     <div class="row">
       <Card

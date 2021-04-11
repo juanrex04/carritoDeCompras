@@ -1,15 +1,15 @@
 <template>
-  <div class="col-12 col-sm-4 col-md-3 col-lg-2 mb-3">
+  <div class="col-12 col-sm-4 col-md-3 col-lg-2 my-3">
     <div class="card">
       <img
         :src="productCard.imgUrl"
-        :alt="`imagen of ${productCard.title}`"
-        class="card-img-top"
+        :alt="`Image of ${productCard.title}`"
+        class="card-img-top fluid"
       />
       <div class="card-body">
-        <h5 class="card-title h3">{{ productCard.title }}</h5>
+        <h5 class="card-title">{{ productCard.title }}</h5>
         <p class="card-text">
-          $ <span class="h4">{{ productCard.price }}</span>
+          $ <span>{{ productCard.price }}</span>
         </p>
         <button class="btn btn-dark" @click="add(productCard)">Shop</button>
       </div>
