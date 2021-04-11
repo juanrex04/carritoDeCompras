@@ -12,9 +12,18 @@ export default createStore({
     setEnterProduct(state, payload) {
       state.cart[payload.id] = payload;
     },
-    clearCart(state){
-      state.cart = {}
-    }
+    clearCart(state) {
+      state.cart = {};
+    },
+    increase(state, payload) {
+      state.cart[payload].amount = state.cart[payload].amount + 1;
+    },
+    diminish(state, payload) {
+      state.cart[payload].amount = state.cart[payload].amount - 1;
+      if (state.cart[payload].amount === 0) {
+        delete state.cart[payload];
+      }
+    },
   },
   actions: {
     async fetchData({ commit }) {
