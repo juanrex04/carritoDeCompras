@@ -12,6 +12,9 @@ export default createStore({
     setEnterProduct(state, payload) {
       state.cart[payload.id] = payload;
     },
+    clearCart(state){
+      state.cart = {}
+    }
   },
   actions: {
     async fetchData({ commit }) {
@@ -30,5 +33,18 @@ export default createStore({
       commit("setEnterProduct", products);
     },
   },
-  modules: {},
+  getters: {
+    totalAmount(state) {
+      return Object.values(state.cart).reduce(
+        (acc, { amount }) => acc + amount,
+        0
+      );
+    },
+    totalPrice(state) {
+      return Object.values(state.cart).reduce(
+        (acc, { amount, price }) => acc + amount * price,
+        0
+      );
+    },
+  },
 });

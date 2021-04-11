@@ -15,7 +15,8 @@
       </tbody>
       <tfoot>
         <tr id="footer-cart">
-          <th scope="row" colspan="5">Empty Cart - Start to shop!</th>
+          <th scope="row" colspan="5" v-if="Object.keys(items).length === 0">Empty Cart - Start to shop!</th>
+          <Footer v-else/>
         </tr>
       </tfoot>
     </table>
@@ -24,11 +25,13 @@
 
 <script>
 import Item from "./Item";
+import Footer from "./Footer";
 import { computed } from "vue";
 import { useStore } from "vuex";
 export default {
   components: {
     Item,
+    Footer,
   },
   setup() {
     const store = useStore();
