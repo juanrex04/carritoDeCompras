@@ -7,9 +7,9 @@
         class="card-img-top"
       />
       <div class="card-body">
-        <h5 class="card-title">{{ productCard.title }}</h5>
+        <h5 class="card-title h3">{{ productCard.title }}</h5>
         <p class="card-text">
-          $ <span>{{ productCard.precio }}</span>
+          $ <span class="h4">{{ productCard.price }}</span>
         </p>
         <button class="btn btn-dark" @click="add(productCard)">Shop</button>
       </div>

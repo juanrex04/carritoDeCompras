@@ -1,26 +1,20 @@
 <template>
-   <tr>
-    <th scope="row">Id</th>
-    <td>title</td>
-    <td>Amount</td>
+  <tr>
+    <td>{{ itemCart.title }}</td>
+    <td>{{ itemCart.amount }}</td>
     <td>
-        <button class="btn btn-info btn-sm">
-            +
-        </button>
-        <button class="btn btn-danger btn-sm">
-            -
-        </button>
+      <button class="btn btn-success btn-sm me-3">+</button>
+      <button class="btn btn-danger btn-sm">-</button>
     </td>
-    <td>$ test</td>
+    <td>${{ itemCart.price * itemCart.amount }}</td>
   </tr>
 </template>
 
 <script>
 export default {
-
-}
+  props: ["itemCart"],
+};
 </script>
 
 <style>
-
 </style>

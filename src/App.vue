@@ -3,10 +3,14 @@
     <h1 class="mb-4">Carro de Compras</h1>
     <!-- <pre></pre> -->
     <div class="row">
-      <Card v-for="product of productsList" :key="product.id" :productCard="product"/>
+      <Card
+        v-for="product of productsList"
+        :key="product.id"
+        :productCard="product"
+      />
     </div>
-    <hr>
-    <Cart/>
+    <hr />
+    <Cart />
   </div>
 </template>
 
@@ -14,25 +18,23 @@
 import { useStore } from "vuex";
 import { computed, onMounted } from "vue";
 import Card from "./components/Card";
-import Cart  from "./components/Cart";
+import Cart from "./components/Cart";
 export default {
   name: "App",
   components: {
     Card,
-    Cart
+    Cart,
   },
   setup() {
-    const store = useStore()
+    const store = useStore();
     onMounted(() => {
-      store.dispatch('fetchData')
+      store.dispatch("fetchData");
     });
-    const productsList = computed(() => store.state.products)
-    const carro = computed(() => store.state.cart)
+    const productsList = computed(() => store.state.products);
 
-    return{
+    return {
       productsList,
-      carro
-    }
+    };
   },
 };
 </script>

@@ -1,19 +1,21 @@
 <template>
   <div class="my-5">
-    <h4>Carrito de compras</h4>
+    <h4>Products</h4>
     <table class="table">
       <thead>
         <tr>
           <th scope="col">Item</th>
-          <th scope="col">Cantidad</th>
-          <th scope="col">Acción</th>
+          <th scope="col">Amount</th>
+          <th scope="col">Action</th>
           <th scope="col">Total</th>
         </tr>
       </thead>
-      <tbody id="items"></tbody>
+      <tbody id="items">
+        <Item v-for="item in items" :key="item.id" :itemCart="item" />
+      </tbody>
       <tfoot>
-        <tr id="footer-carrito">
-          <th scope="row" colspan="5">Carrito vacío - comience a comprar!</th>
+        <tr id="footer-cart">
+          <th scope="row" colspan="5">Empty Cart - Start to shop!</th>
         </tr>
       </tfoot>
     </table>
@@ -21,7 +23,21 @@
 </template>
 
 <script>
-export default {};
+import Item from "./Item";
+import { computed } from "vue";
+import { useStore } from "vuex";
+export default {
+  components: {
+    Item,
+  },
+  setup() {
+    const store = useStore();
+    const items = computed(() => store.state.cart);
+    return {
+      items,
+    };
+  },
+};
 </script>
 
 <style>
