@@ -1,5 +1,5 @@
 <template>
-  <th scope="row" colspan="2">Total products</th>
+  <th scope="row">Total products</th>
   <td>{{ totalAmount }}</td>
   <td>
     <button class="btn btn-danger btn-sm" id="clearCart" @click="clearAll">
