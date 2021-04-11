@@ -4,6 +4,7 @@ export default createStore({
   state: {
     products: [],
     cart: {},
+    notification: [],
   },
   mutations: {
     setProducts(state, payload) {
@@ -24,6 +25,16 @@ export default createStore({
         delete state.cart[payload];
       }
     },
+    pushNotification(state, payload) {
+      state.notification.push({
+        ...payload,
+        id:
+          Math.random.toString(36) +
+          Date.now()
+            .toString(36)
+            .substr(2),
+      });
+    },
   },
   actions: {
     async fetchData({ commit }) {
@@ -35,11 +46,20 @@ export default createStore({
         alert(error);
       }
     },
-    enterToCart({ commit, state }, products) {
+    enterToCart({ commit, state, dispatch }, products) {
       state.cart.hasOwnProperty(products.id)
         ? (products.amount = state.cart[products.id].amount + 1)
         : (products.amount = 1);
+
+      dispatch("showNotification", {
+        type: "success",
+        message:
+          "✔ Successfully, this product added to shopping cart.",
+      }, {root: true});
       commit("setEnterProduct", products);
+    },
+    showNotification({ commit }, notification) {
+      commit("pushNotification", notification);
     },
   },
   getters: {

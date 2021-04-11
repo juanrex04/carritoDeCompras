@@ -11,6 +11,7 @@
     </div>
     <hr />
     <Cart />
+    <Alert v-for="notification in notifications" :key="notification.id" :notification="notification"/>
   </div>
 </template>
 
@@ -19,11 +20,14 @@ import { useStore } from "vuex";
 import { computed, onMounted } from "vue";
 import Card from "./components/Card";
 import Cart from "./components/Cart";
+import Alert from "./components/Alert";
+
 export default {
   name: "App",
   components: {
     Card,
     Cart,
+    Alert,
   },
   setup() {
     const store = useStore();
@@ -32,8 +36,11 @@ export default {
     });
     const productsList = computed(() => store.state.products);
 
+    const notifications = computed(() => store.state.notification);
+
     return {
       productsList,
+      notifications
     };
   },
 };
