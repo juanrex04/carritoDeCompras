@@ -5,6 +5,8 @@
     <div class="row">
       <Card v-for="product of productsList" :key="product.id" :productCard="product"/>
     </div>
+    <hr>
+    <Cart/>
   </div>
 </template>
 
@@ -12,10 +14,12 @@
 import { useStore } from "vuex";
 import { computed, onMounted } from "vue";
 import Card from "./components/Card";
+import Cart  from "./components/Cart";
 export default {
   name: "App",
   components: {
     Card,
+    Cart
   },
   setup() {
     const store = useStore()
